@@ -1,7 +1,12 @@
 # draw_cube
 
-A simple example demonstrating ROS contorl of the Raven II end effector from
+A simple example demonstrating ROS control of the Raven II end effector from
 python
+
+# Requirements
+
+Tested on ROS Kinetic and Ubuntu 16.X.
+Also works from Bash for Windows.
 
 # Installation
 
