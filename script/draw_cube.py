@@ -10,7 +10,7 @@ import numpy as np
 
 # TODO ajs 21/May/18 Use message definitions from the raven_2 package
 from autocircle_generator.msg import raven_state, raven_automove
-#from raven_2.msg import raven_state
+#from raven_2.msg import raven_state, raven_automove
 
 
 class DrawCube:
