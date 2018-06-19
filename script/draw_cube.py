@@ -55,7 +55,7 @@ class DrawCube:
     def tick(self):
         """Publish method - call this at ~1000Hz
         """
-        if self.latest_state == None:
+        if self.latest_state is None:
             rospy.loginfo("Waiting for raven state message...")
             return
 
@@ -112,6 +112,12 @@ class DrawCube:
     def callback(self, data):
         """Callback to recieve Raven II state
         """
+
+        if self.latest_state is None:
+            # Make cube points relative to initial end effector location
+            current_xyz = np.array(data.pos[0:3], dtype=float)
+            self.cube_points = self.cube_points + current_xyz
+
         self.latest_state = data
         self.current_pos = self.latest_state.pos[0:3]
 
