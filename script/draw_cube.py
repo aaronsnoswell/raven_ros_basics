@@ -51,9 +51,6 @@ class DrawCube:
         # Max number of microns to step
         self.max_step_size = 10
 
-        # Message sequence counter
-        self.seq = 0
-
 
     def tick(self):
         """Publish method - call this at ~1000Hz
@@ -96,8 +93,6 @@ class DrawCube:
 
         # Set header
         msg.hdr = std_msgs.msg.Header()
-        self.seq += 1
-        msg.hdr.seq = self.seq
         msg.hdr.stamp = rospy.Time.now()
 
         # Set End Effector tip location
