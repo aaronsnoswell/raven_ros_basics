@@ -103,8 +103,6 @@ class DrawCube:
         # Make quaternions valid
         msg.tf_incr[0].rotation.w = 1
         msg.tf_incr[1].rotation.w = 1
-
-
         
         # Uncomment for debugging info
         #rospy.loginfo("Publishing raven_automove message, tf_incr[0].translation: {}".format(goal_vec))
@@ -121,12 +119,12 @@ class DrawCube:
 def main(args):
     """Main function
     """
-    ds = DrawCube()
+    dc = DrawCube()
     rospy.init_node('draw_cube', anonymous=True)
 
     r = rospy.Rate(1000)
     while not rospy.is_shutdown():
-        ds.tick()
+        dc.tick()
         r.sleep()
 
 
