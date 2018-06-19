@@ -100,8 +100,9 @@ class DrawCube:
         msg.tf_incr[0].translation.y = goal_vec[1]
         msg.tf_incr[0].translation.z = goal_vec[2]
 
-        # Make quaternion valud
+        # Make quaternions valid
         msg.tf_incr[0].rotation.w = 1
+        msg.tf_incr[1].rotation.w = 1
 
 
         
