@@ -90,9 +90,19 @@ class DrawCube:
         # Prepare a new movement command
         msg = raven_automove()
 
+        # Set header
+        msg.hrd = std_msgs.msg.Header()
+        msg.hdr.stamp = rospy.Time.now()
+
+        # Set End Effector tip location
         msg.tf_incr[0].translation.x = goal_vec[0]
         msg.tf_incr[0].translation.y = goal_vec[1]
         msg.tf_incr[0].translation.z = goal_vec[2]
+
+        # Make quaternion valud
+        msg.rf_incr[0].rotation.w = 1
+
+
         
         # Uncomment for debugging info
         #rospy.loginfo("Publishing raven_automove message, tf_incr[0].translation: {}".format(goal_vec))
