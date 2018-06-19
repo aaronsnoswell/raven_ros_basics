@@ -4,6 +4,7 @@
 
 import sys
 import rospy
+import std_msgs.msg
 import roslib
 
 import numpy as np
@@ -91,7 +92,7 @@ class DrawCube:
         msg = raven_automove()
 
         # Set header
-        msg.hrd = std_msgs.msg.Header()
+        msg.hdr = std_msgs.msg.Header()
         msg.hdr.stamp = rospy.Time.now()
 
         # Set End Effector tip location
@@ -100,7 +101,7 @@ class DrawCube:
         msg.tf_incr[0].translation.z = goal_vec[2]
 
         # Make quaternion valud
-        msg.rf_incr[0].rotation.w = 1
+        msg.tf_incr[0].rotation.w = 1
 
 
         
