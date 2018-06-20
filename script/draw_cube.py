@@ -18,11 +18,21 @@ class DrawCube:
     """A simple class that draws a cube with the Raven 2 end effector
     """
 
-    def __init__(self):
+    def __init__(self, pub_rate):
         """Constructor
+
+        Args:
+            pub_rate (int): Target rate to publish at
         """
+
+        # Target publish tick rate
+        self.pub_rate = pub_rate
+        
+        # Subscribe to raven state
         self.sub = rospy.Subscriber("/ravenstate", raven_state, self.callback)
-        self.pub = rospy.Publisher("/raven_automove", raven_automove, queue_size=1)
+
+        # Use publish queue size that matches publish rate
+        self.pub = rospy.Publisher("/raven_automove", raven_automove, queue_size=pub_rate)
 
         self.latest_state = None
         self.current_pos = None
@@ -125,10 +135,16 @@ class DrawCube:
 def main(args):
     """Main function
     """
-    dc = DrawCube()
+
+    # Tick rate in Hz
+    tick_rate = 1000
+
+    dc = DrawCube(tick_rate)
     rospy.init_node('draw_cube', anonymous=True)
 
-    r = rospy.Rate(1000)
+    rospy.loginfo("Let's draw a cube!")
+
+    r = rospy.Rate(tick_rate)
     while not rospy.is_shutdown():
         dc.tick()
         r.sleep()
