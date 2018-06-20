@@ -139,10 +139,9 @@ def main(args):
     # Tick rate in Hz
     tick_rate = 1000
 
-    dc = DrawCube(tick_rate)
     rospy.init_node('draw_cube', anonymous=True)
-
     rospy.loginfo("Let's draw a cube!")
+    dc = DrawCube(tick_rate)
 
     r = rospy.Rate(tick_rate)
     while not rospy.is_shutdown():
