@@ -61,12 +61,14 @@ class DrawCube:
         # Max number of microns to step
         self.max_step_size = 3
 
+        # Log status
+        rospy.loginfo("Waiting for raven state message...")
+
 
     def tick(self):
         """Publish method - call this at ~1000Hz
         """
         if self.latest_state is None:
-            rospy.loginfo("Waiting for raven state message...")
             return
 
         # Get current goal point
@@ -124,6 +126,8 @@ class DrawCube:
         """
 
         if self.latest_state is None:
+            rospy.loginfo("Got raven state, moving now...")
+
             # Make cube points relative to initial end effector location
             current_xyz = np.array(data.pos[0:3], dtype=float)
             self.cube_points = self.cube_points + current_xyz
