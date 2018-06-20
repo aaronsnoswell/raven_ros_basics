@@ -59,7 +59,7 @@ class DrawCube:
         self.point_eps = 5
 
         # Max number of microns to step
-        self.max_step_size = 10
+        self.max_step_size = 2
 
 
     def tick(self):
