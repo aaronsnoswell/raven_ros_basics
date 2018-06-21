@@ -30,7 +30,7 @@ def main():
         msg.hdr.stamp = rospy.Time.now()
 
         # Find elapsed time in seconds
-        double elapsed_time = (msg.hdr.stamp - start_time).toSec();
+        elapsed_time = (msg.hdr.stamp - start_time).to_sec()
         
         # Command z velocity with 2*pi period (in seconds) sine wave
         pos = math.sin(elapsed_time)
