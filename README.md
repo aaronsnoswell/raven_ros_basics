@@ -56,4 +56,14 @@ Type "help", "copyright", "credits" or "license" for more information.
 
 # Usage
 
-TODO...
+Command the Raven from a C++ node
+
+```
+roslaunch ros_raven_basics cpp_talker.launch
+```
+
+Command the Raven from a Python node
+
+```
+roslaunch ros_raven_basics py_talker.launch
+```
