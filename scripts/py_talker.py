@@ -7,13 +7,11 @@ def talker():
     pub = rospy.Publisher('/raven_automove', raven_automove, queue_size=1000)
     rospy.init_node('py_talker', anonymous=True)
 
-    rate = rospy.Rate(10)
+    rate = rospy.Rate(1000)
     while not rospy.is_shutdown():
-
-        hello_str = "hello world %s" % rospy.get_time()
-        rospy.loginfo(hello_str)
-
-        pub.publish(raven_automove())
+        msg = raven_automove()
+        rospy.loginfo("Sending raven_automove")
+        pub.publish()
 
         rate.sleep()
 
