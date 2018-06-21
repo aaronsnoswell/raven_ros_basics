@@ -1,0 +1,7 @@
+<launch>
+
+    <!-- Start the C++ talker node -->
+    <node pkg="raven_ros_basics" type="cpp_talker" name="cpp_talker" output="screen">      
+    </node>
+  
+</launch>

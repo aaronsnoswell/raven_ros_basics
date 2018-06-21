@@ -6,26 +6,32 @@
 
 int main(int argc, char **argv)
 {
-  ros::init(argc, argv, "cpp_talker");
+    ros::init(argc, argv, "cpp_talker");
 
-  ros::NodeHandle n;
-  ros::Publisher pub = n.advertise<raven_2::raven_automove>("/raven_automove", 1000);
-  ros::Rate loop_rate(1000);
+    // Frequency to tick at
+    // We also use the value for the length of the publisher queue
+    int tick_hz = 1000;
+    ros::NodeHandle n;
+    ros::Publisher pub = n.advertise<raven_2::raven_automove>(
+        "/raven_automove",
+        tick_hz
+    );
 
-  int count = 0;
-  while (ros::ok())
-  {
-    raven_2::raven_automove msg;
+    ros::Rate loop_rate(tick_hz);
+    while (ros::ok())
+    {
 
-    ROS_INFO("Sending raven_automove");
-    pub.publish(msg);
+        // Make a new automove message
+        raven_2::raven_automove msg;
+        msg.hdr.stamp = msg.hdr.stamp.now();
 
-    ros::spinOnce();
+        ROS_INFO("Sending raven_automove");
+        pub.publish(msg);
 
-    loop_rate.sleep();
-    ++count;
-  }
+        ros::spinOnce();
+        loop_rate.sleep();
+    }
 
 
-  return 0;
+    return 0;
 }

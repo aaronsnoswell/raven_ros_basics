@@ -1,0 +1,7 @@
+<launch>
+
+    <!-- Start the Python talker node -->
+    <node pkg="raven_ros_basics" type="py_talker.py" name="py_talker" output="screen">      
+    </node>
+  
+</launch>
