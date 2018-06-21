@@ -28,7 +28,7 @@ raven_2
 > catkin_make
 ```
 
-2. **Important: Re-source your workspace**
+3. **Important: Re-source your workspace**
 
 Without this, python won't be able to see the raven_2 package
 
