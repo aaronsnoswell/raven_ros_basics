@@ -28,7 +28,26 @@ raven_2
 > catkin_make
 ```
 
-If the make worked, you should be able to `roscd raven_ros_basics`.
+2. **Important: Re-source your workspace**
+
+Without this, python won't be able to see the raven_2 package
+
+```
+> source devel/setup.bash
+```
+
+You should now be able to see the raven_2 package from python;
+
+```
+> python
+Python 2.7.12 (default, Dec  4 2017, 14:50:18)
+[GCC 5.4.0 20160609] on linux2
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import raven_2
+>>>
+```
+
+If you can do this, you should be good to go...
 
 # Usage
 
