@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(raven_basic)
+project(raven_ros_basics)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -108,7 +108,7 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES raven_basic
+#  LIBRARIES raven_ros_basics
 #  CATKIN_DEPENDS roscpp rospy std_msgs
 #  DEPENDS system_lib
     CATKIN_DEPENDS message_runtime
@@ -127,7 +127,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/raven_basic.cpp
+#   src/${PROJECT_NAME}/raven_ros_basics.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -138,7 +138,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/raven_basic_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/raven_ros_basics_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -195,7 +195,7 @@ include_directories(
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_raven_basic.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_raven_ros_basics.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()
@@ -205,5 +205,5 @@ include_directories(
 
 add_executable(cpp_talker src/cpp_talker.cpp)
 target_link_libraries(cpp_talker ${catkin_LIBRARIES})
-#add_dependencies(cpp_talker raven_basic_generate_messages_cpp)
+#add_dependencies(cpp_talker raven_ros_basics_generate_messages_cpp)
 add_dependencies(cpp_talker ${catkin_EXPORTED_TARGETS})
