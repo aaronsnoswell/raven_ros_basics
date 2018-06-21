@@ -47,7 +47,12 @@ Type "help", "copyright", "credits" or "license" for more information.
 >>>
 ```
 
-If you can do this, you should be good to go...
+4. **Make the python script(s) executable**
+
+```
+> cd raven_ros_basics/scripts
+> chmod +x *.py
+```
 
 # Usage
 
