@@ -6,8 +6,6 @@ from raven_2.msg import raven_automove, raven_state
 
 
 def main():
-    """
-    """
     rospy.init_node('py_talker')
 
     # Frequency to tick at
