@@ -1,14 +1,14 @@
 <launch>
   
     <!-- True if we're simulating only -->
-    <arg name="sim" default="true" />
+    <arg name="sim" default="false" />
 
     <!-- Start a raven stub if we're in simulated mode -->
-    <node pkg="draw_cube" type="raven_stub.py" name="raven_stub" output="screen" if="$(arg sim)">      
+    <node pkg="raven_basic" type="raven_stub.py" name="raven_stub" output="screen" if="$(arg sim)">      
     </node>
 
     <!-- Start the cube drawing node -->
-    <node pkg="draw_cube" type="do_draw_cube.py" name="draw_cube" output="screen">      
+    <node pkg="raven_basic" type="draw_cube.py" name="draw_cube" output="screen">      
     </node>
   
 </launch>
