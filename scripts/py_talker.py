@@ -25,8 +25,12 @@ def main():
         msg = raven_automove()
         msg.hdr.stamp = rospy.Time.now()
 
+        # Make quaternions valid unit quaternions
+        msg.tf_incr[0].rotation.w = 1.0
+        msg.tf_incr[1].rotation.w = 1.0
+
         rospy.loginfo("Sending raven_automove")
-        pub.publish()
+        pub.publish(msg)
 
         rate.sleep()
 

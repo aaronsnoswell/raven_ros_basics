@@ -25,6 +25,10 @@ int main(int argc, char **argv)
         raven_2::raven_automove msg;
         msg.hdr.stamp = msg.hdr.stamp.now();
 
+        // Make quaternions valid unit quaternions
+        msg.tf_incr[0].rotation.w = 1.0;
+        msg.tf_incr[1].rotation.w = 1.0;
+
         ROS_INFO("Sending raven_automove");
         pub.publish(msg);
 
