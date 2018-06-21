@@ -1,5 +1,6 @@
-#include "ros/ros.h"
 
+#include <cmath>
+#include "ros/ros.h"
 #include "raven_2/raven_automove.h"
 #include "raven_2/raven_state.h"
 
@@ -17,6 +18,9 @@ int main(int argc, char **argv)
         tick_hz
     );
 
+    // Record start time
+    ros::Time start_time = ros::Time::now();
+
     ros::Rate loop_rate(tick_hz);
     while (ros::ok())
     {
@@ -24,6 +28,14 @@ int main(int argc, char **argv)
         // Make a new automove message
         raven_2::raven_automove msg;
         msg.hdr.stamp = msg.hdr.stamp.now();
+
+        // Find elapsed time in seconds
+        double elapsed_time = (msg.hdr.stamp - start_time).toSec();
+        
+        // Command z velocity with 2*pi period (in seconds) sine wave
+        double pos = sin(elapsed_time);
+        msg.tf_incr[0].translation.z = pos;
+        msg.tf_incr[1].translation.z = pos;
 
         // Make quaternions valid unit quaternions
         msg.tf_incr[0].rotation.w = 1.0;
