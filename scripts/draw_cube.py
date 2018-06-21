@@ -9,9 +9,7 @@ import roslib
 
 import numpy as np
 
-# TODO ajs 21/May/18 Use message definitions from the raven_2 package
-from AutoCircle_generater.msg import raven_state, raven_automove
-#from raven_2.msg import raven_state, raven_automove
+from raven_2.msg import raven_state, raven_automove
 
 
 class DrawCube:
@@ -143,7 +141,7 @@ def main(args):
     # Tick rate in Hz
     tick_rate = 1000
 
-    rospy.init_node('draw_cube', anonymous=True)
+    rospy.init_node('draw_cube')
     rospy.loginfo("Let's draw a cube!")
     dc = DrawCube(tick_rate)
 

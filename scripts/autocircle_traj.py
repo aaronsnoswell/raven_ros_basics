@@ -12,8 +12,9 @@ import roslib
 import numpy as np
 
 # TODO ajs 21/May/18 Use message definitions from the raven_2 package
-from AutoCircle_generater.msg import raven_state, raven_automove
+#from autocircle_generator.msg import raven_state, raven_automove
 #from raven_2.msg import raven_state, raven_automove
+from draw_cube.msg import raven_state, raven_automove
 
 # CSV parameters
 csv_filename = os.path.join(
