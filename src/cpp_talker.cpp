@@ -18,6 +18,9 @@ int main(int argc, char **argv)
         tick_hz
     );
 
+    // Scale of the velocity commands, units is microns
+    float scale = 3.0;
+
     // Record start time
     ros::Time start_time = ros::Time::now();
 
@@ -32,9 +35,11 @@ int main(int argc, char **argv)
         // Find elapsed time in seconds
         double elapsed_time = (msg.hdr.stamp - start_time).toSec();
         
-        // Command z velocity with 2*pi period (in seconds) sine wave
-        double pos = sin(elapsed_time);
+        // Command velocity with 2*pi period (in seconds) sine wave
+        double pos = scale * sin(elapsed_time);
+        msg.tf_incr[0].translation.y = pos;
         msg.tf_incr[0].translation.z = pos;
+        msg.tf_incr[1].translation.y = pos;
         msg.tf_incr[1].translation.z = pos;
 
         // Make quaternions valid unit quaternions

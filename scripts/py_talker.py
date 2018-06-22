@@ -17,6 +17,9 @@ def main():
         queue_size=tick_hz
     )
 
+    # Scale of the velocity commands, units is microns
+    scale = 3.0;
+
     # Record start time
     start_time = rospy.Time.now()
 
@@ -30,9 +33,11 @@ def main():
         # Find elapsed time in seconds
         elapsed_time = (msg.hdr.stamp - start_time).to_sec()
         
-        # Command z velocity with 2*pi period (in seconds) sine wave
-        pos = math.sin(elapsed_time)
+        # Command velocity with 2*pi period (in seconds) sine wave
+        pos = scale * math.sin(elapsed_time)
+        msg.tf_incr[0].translation.y = pos
         msg.tf_incr[0].translation.z = pos
+        msg.tf_incr[1].translation.y = pos
         msg.tf_incr[1].translation.z = pos
 
         # Make quaternions valid unit quaternions
