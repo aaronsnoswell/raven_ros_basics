@@ -10,11 +10,12 @@ def main():
 
     # Frequency to tick at
     # We also use the value for the length of the publisher queue
+    # ANDY: For ROS Hyrdo, try with line 18 (below) commented out, as it is now
     tick_hz = 1000;
     pub = rospy.Publisher(
         '/raven_automove',
         raven_automove,
-        queue_size=tick_hz
+        #queue_size=tick_hz
     )
 
     # Scale of the velocity commands, units is microns
